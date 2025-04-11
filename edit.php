@@ -97,7 +97,6 @@ if (isset($_POST['updateUser'])) {
         <section class="updateForm">
             <h3>Modifier un utilisateur</h3>
             <form method="POST" action="edit.php?id=<?= htmlspecialchars($id); ?>">
-
                 <label for="firstName">Prénom :</label><br>
                 <input type="text" name="firstName" value="<?= htmlspecialchars($firstName); ?>"><br>
                 <?php if (isset($errors['firstName'])): ?>

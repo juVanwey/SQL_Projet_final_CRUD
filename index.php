@@ -77,33 +77,32 @@ try {
         <div class="addFormAndTable">
             <section class="addForm">
                 <h3>Ajouter un utilisateur</h3>
-                <form method="POST" action="edit.php?id=<?= htmlspecialchars($id); ?>">
-
-                    <label for="firstName">Prénom :</label><br>
+                <form action="index.php" method="POST">
+                    <label for="firstName">Prénom:</label><br>
                     <input type="text" name="firstName" value="<?= htmlspecialchars($firstName); ?>"><br>
                     <?php if (isset($errors['firstName'])): ?>
                         <div class="error"><?= htmlspecialchars($errors['firstName']); ?></div>
                     <?php endif; ?>
 
-                    <label for="lastName">Nom :</label><br>
+                    <label for="lastName">Nom:</label><br>
                     <input type="text" name="lastName" value="<?= htmlspecialchars($lastName); ?>"><br>
                     <?php if (isset($errors['lastName'])): ?>
                         <div class="error"><?= htmlspecialchars($errors['lastName']); ?></div>
                     <?php endif; ?>
 
-                    <label for="mail">Email :</label><br>
-                    <input type="text" name="mail" value="<?= htmlspecialchars($mail); ?>"><br>
+                    <label for="mail">Email:</label><br>
+                    <input type="email" name="mail" value="<?= htmlspecialchars($mail); ?>"><br>
                     <?php if (isset($errors['mail'])): ?>
                         <div class="error"><?= htmlspecialchars($errors['mail']); ?></div>
                     <?php endif; ?>
 
-                    <label for="zipCode">Code postal :</label><br>
+                    <label for="zipCode">Code postal:</label><br>
                     <input type="text" name="zipCode" value="<?= htmlspecialchars($zipCode); ?>"><br>
                     <?php if (isset($errors['zipCode'])): ?>
                         <div class="error"><?= htmlspecialchars($errors['zipCode']); ?></div>
                     <?php endif; ?>
 
-                    <button type="submit" name="updateUser">Mettre à jour</button>
+                    <button type="submit" name="addUser">Ajouter</button>
                 </form>
 
             </section>
