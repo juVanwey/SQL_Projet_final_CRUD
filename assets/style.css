@@ -84,17 +84,17 @@ h3 {
 }
 
 .updateForm {
-    button {
-        margin-bottom: 20px;
-    }
-    a {
-        text-align: center;
-    }
+  button {
+    margin-bottom: 20px;
+  }
+  a {
+    text-align: center;
+  }
 }
 
 .error {
   color: red;
-margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .table {
@@ -121,4 +121,10 @@ table {
 
 table tr:nth-child(even) {
   background-color: #f2f2f2;
+}
+
+.message {
+  color: green;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

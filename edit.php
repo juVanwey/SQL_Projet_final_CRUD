@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 require 'db.php';
 
 // UPDATE
@@ -20,7 +23,7 @@ if (isset($_GET['id'])) {
         // + sécurisé contre injections :
         // $stmt = $db->prepare(...) = je prépare ma requête SQL avec un trou (?)
         // $stmt->execute([$id]) = je dis quelle valeur mettre dans ce trou
-        // $user = $stmt->fetch()n = je récupère le résultat : un utilisateur précis
+        // $user = $stmt->fetch() = je récupère le résultat : un utilisateur précis
 
         if (!$user) {
             echo "Utilisateur non trouvé.";
@@ -71,6 +74,7 @@ if (isset($_POST['updateUser'])) {
             // $result = $db->query($query);
             $stmt = $db->prepare("UPDATE user SET firstName = ?, lastName = ?, mail = ?, zipCode = ? WHERE id = ?");
             $stmt->execute([$firstName, $lastName, $mail, $zipCode, $id]);
+            $_SESSION['confirmationUpdateMessage'] = "Utilisateur modifié avec succès !";
             header("Location: index.php");
             exit();
         } catch (Exception $e) {

@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 require 'db.php';
 
 $errors = [];
@@ -37,6 +40,10 @@ if (isset($_POST['addUser'])) {
             // Requête d'insertion INSERT INTO
             $stmt = $db->prepare("INSERT INTO user (firstName, lastName, mail, zipCode) VALUES (?, ?, ?, ?)");
             $stmt->execute([$firstName, $lastName, $mail, $zipCode]);
+
+            // Message de confirmation
+            $_SESSION['confirmationAddMessage'] = "Utilisateur ajouté avec succès !";
+
             // Redirection vers la page d'accueil
             header("Location: index.php");
             exit();
@@ -105,10 +112,27 @@ try {
                     <button type="submit" name="addUser">Ajouter</button>
                 </form>
 
+                <!-- Message de confirmation d'ajout -->
+                <?php
+                if (isset($_SESSION['confirmationAddMessage'])): ?>
+                    <div class="message"><?= $_SESSION['confirmationAddMessage']; ?></div>
+                <?php unset($_SESSION['confirmationAddMessage']); // supprimer après affichage
+                endif;
+                ?>
+
             </section>
 
             <!-- Tableau pour afficher les users et les btns modifier et supprimer -->
             <section class="table">
+
+                <!-- Message de confirmation de modfification -->
+                <?php
+                if (isset($_SESSION['confirmationUpdateMessage'])): ?>
+                    <div class="message"><?= $_SESSION['confirmationUpdateMessage']; ?></div>
+                <?php unset($_SESSION['confirmationUpdateMessage']); // supprimer après affichage
+                endif;
+                ?>
+
                 <h3>Liste des utilisateurs</h3>
                 <table>
                     <tr>
